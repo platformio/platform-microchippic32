@@ -16,8 +16,7 @@
     "maximum_size": 520192, 
     "protocol": "stk500v2", 
     "require_upload_port": true, 
-    "speed": 115200, 
-    "wait_for_upload_port": true
+    "speed": 115200
   }, 
   "url": "http://fubarino.org/sd/index.html", 
   "vendor": "Fubarino"
