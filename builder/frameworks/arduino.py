@@ -34,18 +34,21 @@ FRAMEWORK_VERSION = platform.get_package_version(
     "framework-arduinomicrochippic32")
 assert isdir(FRAMEWORK_DIR)
 
-env.Prepend(
-    CPPDEFINES=["ARDUINO=%s" % FRAMEWORK_VERSION.split(".")[1]],
+env.Append(
+    CPPDEFINES=[
+        "ARDUINO=%s" % FRAMEWORK_VERSION.split(".")[1],
+        "ARDUINO_ARCH_PIC32"
+    ],
+
     CPPPATH=[
         join("$BUILD_DIR", "FrameworkArduino")
     ],
+
     LIBPATH=[
         join(FRAMEWORK_DIR, "cores", env.BoardConfig().get("build.core")),
         join(FRAMEWORK_DIR, "variants", env.BoardConfig().get("build.variant"))
-    ]
-)
+    ],
 
-env.Append(
     LIBSOURCE_DIRS=[
         join(FRAMEWORK_DIR, "libraries")
     ]
