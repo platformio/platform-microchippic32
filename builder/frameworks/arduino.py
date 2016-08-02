@@ -32,6 +32,7 @@ platform = env.DevPlatform()
 FRAMEWORK_DIR = platform.get_package_dir("framework-arduinomicrochippic32")
 FRAMEWORK_VERSION = platform.get_package_version(
     "framework-arduinomicrochippic32")
+BUILD_CORE = env.BoardConfig().get("build.core")
 assert isdir(FRAMEWORK_DIR)
 
 env.Append(
@@ -45,8 +46,13 @@ env.Append(
     ],
 
     LIBPATH=[
-        join(FRAMEWORK_DIR, "cores", env.BoardConfig().get("build.core")),
+        join(FRAMEWORK_DIR, "cores", BUILD_CORE),
         join(FRAMEWORK_DIR, "variants", env.BoardConfig().get("build.variant"))
+    ],
+
+    LINKFLAGS=[
+        join(FRAMEWORK_DIR, "cores", BUILD_CORE, "cpp-startup.S"),
+        join(FRAMEWORK_DIR, "cores", BUILD_CORE, "crti.S")
     ],
 
     LIBSOURCE_DIRS=[
@@ -75,7 +81,7 @@ envsafe = env.Clone()
 
 libs.append(envsafe.BuildLibrary(
     join("$BUILD_DIR", "FrameworkArduino"),
-    join(FRAMEWORK_DIR, "cores", env.BoardConfig().get("build.core"))
+    join(FRAMEWORK_DIR, "cores", BUILD_CORE)
 ))
 
 env.Prepend(LIBS=libs)

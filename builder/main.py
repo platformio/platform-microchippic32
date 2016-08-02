@@ -90,6 +90,7 @@ env.Replace(
 
 if int(env.BoardConfig().get("upload.maximum_ram_size", 0)) < 65535:
     env.Append(
+        ASFLAGS=["-G1024"],
         CCFLAGS=["-G1024"]
     )
 
@@ -97,19 +98,8 @@ if int(env.BoardConfig().get("upload.maximum_ram_size", 0)) < 65535:
 env.Append(
     BUILDERS=dict(
         ElfToEep=Builder(
-            action=" ".join([
-                "$OBJCOPY",
-                "-O",
-                "ihex",
-                "-j",
-                ".eeprom",
-                '--set-section-flags=.eeprom="alloc,load"',
-                "--no-change-warnings",
-                "--change-section-lma",
-                ".eeprom=0",
-                "$SOURCES",
-                "$TARGET"]),
-            suffix=".eep"
+            action=" ".join(["pic32-bin2hex", "-a", "$SOURCES"]),
+            suffix=".hex"
         ),
 
         ElfToHex=Builder(
@@ -158,7 +148,7 @@ env.Append(
 if "uploadlazy" in COMMAND_LINE_TARGETS:
     target_firm = join("$BUILD_DIR", "firmware.hex")
 else:
-    target_firm = env.ElfToHex(join("$BUILD_DIR", "firmware"), target_elf)
+    target_firm = env.ElfToHex(target_elf)
 
 #
 # Target: Print binary size
