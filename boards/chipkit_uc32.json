@@ -1,0 +1,23 @@
+{
+  "build": {
+    "core": "pic32", 
+    "extra_flags": "-D_BOARD_UC32_", 
+    "f_cpu": "80000000L", 
+    "ldscript": "chipKIT-application-32MX340F512.ld", 
+    "mcu": "32MX340F512H", 
+    "variant": "uC32"
+  }, 
+  "frameworks": [
+    "arduino"
+  ], 
+  "name": "Digilent chipKIT uC32", 
+  "upload": {
+    "maximum_ram_size": 32768, 
+    "maximum_size": 520192, 
+    "protocol": "stk500v2", 
+    "require_upload_port": true, 
+    "speed": 115200
+  }, 
+  "url": "http://store.digilentinc.com/chipkit-uc32-basic-microcontroller-board-with-uno-r3-headers/", 
+  "vendor": "Digilent"
+}

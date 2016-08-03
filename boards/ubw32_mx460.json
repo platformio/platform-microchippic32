@@ -1,0 +1,23 @@
+{
+  "build": {
+    "core": "pic32", 
+    "extra_flags": "-D_BOARD_UBW32_MX460_ -D_USE_USB_FOR_SERIAL_", 
+    "f_cpu": "80000000L", 
+    "ldscript": "chipKIT-application-32MX460F512.ld", 
+    "mcu": "32MX460F512L", 
+    "variant": "Default_100"
+  }, 
+  "frameworks": [
+    "arduino"
+  ], 
+  "name": "UBW32 MX460", 
+  "upload": {
+    "maximum_ram_size": 32768, 
+    "maximum_size": 520192, 
+    "protocol": "stk500v2", 
+    "require_upload_port": true, 
+    "speed": 115200
+  }, 
+  "url": "http://www.schmalzhaus.com/UBW32/", 
+  "vendor": "UBW32"
+}

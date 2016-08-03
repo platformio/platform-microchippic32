@@ -1,0 +1,23 @@
+{
+  "build": {
+    "core": "pic32", 
+    "extra_flags": "-D_BOARD_CEREBOT_MX3CK_", 
+    "f_cpu": "80000000L", 
+    "ldscript": "chipKIT-application-32MX320F128.ld", 
+    "mcu": "32MX320F128H", 
+    "variant": "Cerebot_MX3cK"
+  }, 
+  "frameworks": [
+    "arduino"
+  ], 
+  "name": "Digilent chipKIT MX3", 
+  "upload": {
+    "maximum_ram_size": 16384, 
+    "maximum_size": 126976, 
+    "protocol": "stk500v2", 
+    "require_upload_port": true, 
+    "speed": 115200
+  }, 
+  "url": "http://store.digilentinc.com/chipkit-mx3-microcontroller-board-with-pmod-headers/", 
+  "vendor": "Digilent"
+}

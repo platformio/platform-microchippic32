@@ -1,0 +1,23 @@
+{
+  "build": {
+    "core": "pic32", 
+    "extra_flags": "-D_BOARD_UNO_", 
+    "f_cpu": "80000000L", 
+    "ldscript": "chipKIT-application-32MX320F128.ld", 
+    "mcu": "32MX320F128H", 
+    "variant": "Uno32"
+  }, 
+  "frameworks": [
+    "arduino"
+  ], 
+  "name": "Digilent chipKIT UNO32", 
+  "upload": {
+    "maximum_ram_size": 16384, 
+    "maximum_size": 126976, 
+    "protocol": "stk500v2", 
+    "require_upload_port": true, 
+    "speed": 115200
+  }, 
+  "url": "http://store.digilentinc.com/chipkit-uno32-basic-microcontroller-board-retired-see-chipkit-uc32/", 
+  "vendor": "Digilent"
+}

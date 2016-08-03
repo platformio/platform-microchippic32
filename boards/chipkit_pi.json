@@ -1,0 +1,23 @@
+{
+  "build": {
+    "core": "pic32", 
+    "extra_flags": "-D_BOARD_CHIPKIT_PI_", 
+    "f_cpu": "40000000L", 
+    "ldscript": "chipKIT-application-32MX250F128.ld", 
+    "mcu": "32MX250F128B", 
+    "variant": "ChipKIT_Pi"
+  }, 
+  "frameworks": [
+    "arduino"
+  ], 
+  "name": "Element14 chipKIT Pi", 
+  "upload": {
+    "maximum_ram_size": 32768, 
+    "maximum_size": 122880, 
+    "protocol": "stk500v2", 
+    "require_upload_port": true, 
+    "speed": 115200
+  }, 
+  "url": "http://www.element14.com/community/community/knode/dev_platforms_kits/element14_dev_kits/microchip-chipkit/chipkit_pi", 
+  "vendor": "element14"
+}

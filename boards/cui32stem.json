@@ -1,0 +1,23 @@
+{
+  "build": {
+    "core": "pic32", 
+    "extra_flags": "-D_BOARD_CUI32_ -D_USE_USB_FOR_SERIAL_", 
+    "f_cpu": "80000000L", 
+    "ldscript": "chipKIT-application-32MX795F512.ld", 
+    "mcu": "32MX795F512H", 
+    "variant": "CUI32stem"
+  }, 
+  "frameworks": [
+    "arduino"
+  ], 
+  "name": "SeeedStudio CUI32stem", 
+  "upload": {
+    "maximum_ram_size": 131072, 
+    "maximum_size": 520192, 
+    "protocol": "stk500v2", 
+    "require_upload_port": true, 
+    "speed": 115200
+  }, 
+  "url": "http://www.seeedstudio.com/wiki/CUI32Stem", 
+  "vendor": "SeeedStudio"
+}

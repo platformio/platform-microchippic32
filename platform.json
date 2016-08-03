@@ -1,0 +1,47 @@
+{
+  "name": "microchippic32",
+  "title": "Microchip PIC32",
+  "description": "Microchip's 32-bit portfolio with the MIPS microAptiv or M4K core offer high performance microcontrollers, and all the tools needed to develop your embedded projects. PIC32 MCUs gives your application the processing power, memory and peripherals your design needs!",
+  "url": "http://www.microchip.com/design-centers/32-bit",
+  "homepage": "http://platformio.org/platforms/microchippic32",
+  "license": {
+    "type": "Apache-2.0",
+    "url": "http://opensource.org/licenses/apache2.0.php"
+  },
+  "engines": {
+    "platformio": "~3.0.0",
+    "scons": ">=2.3.0,<2.6.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/platformio/platform-microchippic32.git"
+  },
+  "version": "0.1.0",
+  "packageRepositories": [
+    "https://dl.bintray.com/platformio/dl-packages/manifest.json",
+    "https://sourceforge.net/projects/platformio-storage/files/packages/manifest.json/download",
+    "http://dl.platformio.org/packages/manifest.json"
+  ],
+  "frameworks": {
+    "arduino": {
+      "package": "framework-arduinomicrochippic32",
+      "script": "builder/frameworks/arduino.py"
+    }
+  },
+  "packages": {
+    "toolchain-microchippic32": {
+      "type": "toolchain",
+      "version": "~1.40803.0"
+    },
+    "framework-arduinomicrochippic32": {
+      "type": "framework",
+      "optional": true,
+      "version": "~1.10201.0"
+    },
+    "tool-pic32prog": {
+      "type": "uploader",
+      "optional": true,
+      "version": ">=1.200200.0,<1.200225.0"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "build": {
+    "core": "pic32", 
+    "extra_flags": "-D_BOARD_OLIMEX_PIC32_PINGUINO_ -D_USE_USB_FOR_SERIAL_", 
+    "f_cpu": "80000000L", 
+    "ldscript": "chipKIT-application-32MX440F256.ld", 
+    "mcu": "32MX440F256H", 
+    "variant": "Olimex_PIC32_Pinguino"
+  }, 
+  "frameworks": [
+    "arduino"
+  ], 
+  "name": "Olimex PIC32-PINGUINO", 
+  "upload": {
+    "maximum_ram_size": 32768, 
+    "maximum_size": 258048, 
+    "protocol": "stk500v2", 
+    "require_upload_port": true, 
+    "speed": 115200
+  }, 
+  "url": "https://www.olimex.com/Products/Duino/PIC32/PIC32-PINGUINO/open-source-hardware", 
+  "vendor": "Olimex"
+}
