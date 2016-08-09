@@ -10,7 +10,7 @@ install:
     # tmp solution, use 32-bits toolchain
     - sudo apt-get install -qq lib32z1 lib32ncurses5 lib32bz2-1.0
 
-    - pip install -U https://github.com/platformio/platformio/archive/feature/platformio-30.zip
+    - pip install -U https://github.com/platformio/platformio/archive/develop.zip
     - platformio platform install file://.
 
 script:
