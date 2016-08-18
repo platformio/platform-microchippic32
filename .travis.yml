@@ -1,17 +1,26 @@
 language: python
 python:
-    - "2.7"
+  - "2.7"
 
 env:
-    - PLATFORMIO_PROJECT_DIR=examples/arduino-blink
-    - PLATFORMIO_PROJECT_DIR=examples/arduino-internal-libs
+  - PLATFORMIO_PROJECT_DIR=examples/arduino-blink
+  - PLATFORMIO_PROJECT_DIR=examples/arduino-internal-libs
 
 install:
-    # tmp solution, use 32-bits toolchain
-    - sudo apt-get install -qq lib32z1 lib32ncurses5 lib32bz2-1.0
+  # tmp solution, use 32-bits toolchain
+  - sudo apt-get install -qq lib32z1 lib32ncurses5 lib32bz2-1.0
 
-    - pip install -U https://github.com/platformio/platformio/archive/develop.zip
-    - platformio platform install file://.
+  - pip install -U https://github.com/platformio/platformio/archive/develop.zip
+  - platformio platform install file://.
 
 script:
-    - platformio run -d $PLATFORMIO_PROJECT_DIR
+  - platformio run -d $PLATFORMIO_PROJECT_DIR
+
+notifications:
+  email: false
+
+  slack:
+    rooms:
+      secure: UhhwtiC81VRcsXnBHTzOpL+rY9QO4x3bwBGPUAUkcI1Y7pTO/H7N0vSohPfdSrZWOVqofyg/YIQrtUqloLlstP4t+OmPw8qWMivHPu9TpbexlfB7z81nWbyYtYreqy07NDCmcTSQ3E+Xfh0g/K60BD0p8yqxVvhAXNotVG9ztpjazCCF+cd3IuyI7JWzJ/rZ7p+5GwkA/yQzldKJA5TlApKWYLunK+vNNOle4V5JJLtnG93QSF9ABs9e7NqA9tOYI1E8pxcF+C5cOx8Gn3phwtgfet+PRAGKccYN6LqCMFmehwL2TgoXJhQ43zX0HJ7RrbjMabJIW7yN+TlB7YbTgKYqrRCziGFnhUuxIdU6jGNwF15viqzI3TL9bLc/I/lrvTAoecMBL2C7anzNIzLzoMgVmWov9/Ntljz0i2olphABhe2hswFzwMsuhwcXVOuKa4B0HIPHmEx4wQtYS0HT/yqkRb8xKYZzXmuz068T45Lj8yHLt1pzTT9osAA4A+6A/ZQtoQdAhQpTxWyvZonRbRwFvhn6CbdV01L7iXsuXJMmSAZRSUh2h0E2mOKiQF3TcS58SdiF5nbQ6sJQwfdUFafWjcpIA+xaIR12tDO9GNP98hWoMd5s7VmyBHupi8X2FUm4REC5SnpY3VG4W8nmiGx7Ojfi/1VYf0IialL9OC0=
+    on_failure: always
+    on_success: change
