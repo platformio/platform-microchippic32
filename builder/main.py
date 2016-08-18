@@ -79,8 +79,8 @@ env.Replace(
 
     UPLOADER="pic32prog",
     UPLOADERFLAGS=[
-        "-b", "$UPLOAD_SPEED",
-        "-d", '"$UPLOAD_PORT"'
+        "-d", '"$UPLOAD_PORT"',
+        "-b", "$UPLOAD_SPEED"
     ],
     UPLOADCMD='$UPLOADER $UPLOADERFLAGS $SOURCES',
 
