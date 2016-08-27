@@ -98,19 +98,23 @@ if int(env.BoardConfig().get("upload.maximum_ram_size", 0)) < 65535:
 env.Append(
     BUILDERS=dict(
         ElfToEep=Builder(
-            action=" ".join(["pic32-bin2hex", "-a", "$SOURCES"]),
+            action=env.VerboseAction(" ".join([
+                "pic32-bin2hex",
+                "-a", "$SOURCES"
+            ]), "Building $TARGET"),
             suffix=".hex"
         ),
 
         ElfToHex=Builder(
-            action=" ".join([
+            action=env.VerboseAction(" ".join([
                 "$OBJCOPY",
                 "-O",
                 "ihex",
                 "-R",
                 ".eeprom",
                 "$SOURCES",
-                "$TARGET"]),
+                "$TARGET"
+            ]), "Building $TARGET"),
             suffix=".hex"
         )
     )
@@ -154,15 +158,19 @@ else:
 # Target: Print binary size
 #
 
-target_size = env.Alias("size", target_elf, "$SIZEPRINTCMD")
+target_size = env.Alias(
+    "size", target_elf,
+    env.VerboseAction("$SIZEPRINTCMD", "Calculating size $SOURCE"))
 AlwaysBuild(target_size)
 
 #
 # Target: Upload firmware
 #
 
-upload = env.Alias(["upload", "uploadlazy"], target_firm,
-                   [env.AutodetectUploadPort, "$UPLOADCMD"])
+upload = env.Alias(
+    ["upload", "uploadlazy"], target_firm,
+    [env.VerboseAction(env.AutodetectUploadPort, "Looking for upload port..."),
+     env.VerboseAction("$UPLOADCMD", "Uploading $SOURCE")])
 AlwaysBuild(upload)
 
 #
