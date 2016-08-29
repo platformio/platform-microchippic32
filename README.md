@@ -16,5 +16,5 @@ Microchip's 32-bit portfolio with the MIPS microAptiv or M4K core offer high per
 > platformio platform install microchippic32
 
 # install development version
-> platformio platform install https://github.com/platformio/platform-microchippic32/archive/develop.zip
+> platformio platform install https://github.com/platformio/platform-microchippic32.git
 ```
