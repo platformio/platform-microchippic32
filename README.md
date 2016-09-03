@@ -12,7 +12,7 @@ Microchip's 32-bit portfolio with the MIPS microAptiv or M4K core offer high per
 1. [Install PlatformIO CLI](http://docs.platformio.org/en/latest/installation.html)
 2. Install Microchip PIC32 development platform:
 ```bash
-# isntall the latest stable version
+# install the latest stable version
 > platformio platform install microchippic32
 
 # install development version
