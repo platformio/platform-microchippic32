@@ -5,14 +5,14 @@
 Microchip's 32-bit portfolio with the MIPS microAptiv or M4K core offer high performance microcontrollers, and all the tools needed to develop your embedded projects. PIC32 MCUs gives your application the processing power, memory and peripherals your design needs!
 
 * [Home](http://platformio.org/platforms/microchippic32) (home page in PlatformIO Platform Registry)
-* [Documentation](http://docs.platformio.org/en/latest/platforms/microchippic32.html) (advanced usage, packages, boards, frameworks, etc.)
+* [Documentation](http://docs.platformio.org/en/stable/platforms/microchippic32.html) (advanced usage, packages, boards, frameworks, etc.)
 
 # Usage
 
-1. [Install PlatformIO CLI](http://docs.platformio.org/en/latest/installation.html)
+1. [Install PlatformIO CLI](http://docs.platformio.org/en/stable/installation.html)
 2. Install Microchip PIC32 development platform:
 ```bash
-# isntall the latest stable version
+# install the latest stable version
 > platformio platform install microchippic32
 
 # install development version
