@@ -38,7 +38,7 @@
     "tool-pic32prog": {
       "type": "uploader",
       "optional": true,
-      "version": ">=1.200200.0,<1.200225.0"
+      "version": "~2.20104.0"
     }
   }
 }
