@@ -13,7 +13,7 @@
     "type": "git",
     "url": "https://github.com/platformio/platform-microchippic32.git"
   },
-  "version": "1.1.0",
+  "version": "1.2.0",
   "packageRepositories": [
     "https://dl.bintray.com/platformio/dl-packages/manifest.json",
     "https://sourceforge.net/projects/platformio-storage/files/packages/manifest.json/download",
@@ -33,12 +33,12 @@
     "framework-arduinomicrochippic32": {
       "type": "framework",
       "optional": true,
-      "version": "~1.10201.0"
+      "version": "~1.10301.0"
     },
     "tool-pic32prog": {
       "type": "uploader",
       "optional": true,
-      "version": ">=1.200200.0,<1.200225.0"
+      "version": "~2.20104.0"
     }
   }
 }
