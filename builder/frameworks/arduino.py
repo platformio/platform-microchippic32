@@ -37,7 +37,7 @@ assert isdir(FRAMEWORK_DIR)
 
 env.Append(
     CPPDEFINES=[
-        "ARDUINO=%s" % FRAMEWORK_VERSION.split(".")[1],
+        ("ARDUINO", int(FRAMEWORK_VERSION.split(".")[1])),
         "ARDUINO_ARCH_PIC32"
     ],
 
