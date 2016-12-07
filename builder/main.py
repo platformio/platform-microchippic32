@@ -54,9 +54,9 @@ env.Replace(
     CXXFLAGS=["-fno-exceptions"],
 
     CPPDEFINES=[
-        "F_CPU=$BOARD_F_CPU",
-        "MPIDEVER=16777998",
-        "MPIDE=150"
+        ("F_CPU", "$BOARD_F_CPU"),
+        ("MPIDEVER", "16777998"),
+        ("MPIDE", "150")
     ],
 
     LINKFLAGS=[
