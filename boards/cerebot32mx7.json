@@ -6,7 +6,10 @@
     "ldscript": "chipKIT-application-32MX795F512.ld", 
     "mcu": "32MX795F512L", 
     "variant": "Cerebot_32MX7"
-  }, 
+  },
+  "connectivity": [
+    "can"
+  ],  
   "frameworks": [
     "arduino"
   ], 
