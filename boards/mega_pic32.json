@@ -7,6 +7,9 @@
     "mcu": "32MX795F512L", 
     "variant": "Max32"
   }, 
+  "connectivity": [
+    "can"
+  ],
   "frameworks": [
     "arduino"
   ], 

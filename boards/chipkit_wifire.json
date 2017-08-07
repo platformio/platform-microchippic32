@@ -7,6 +7,9 @@
     "mcu": "32MZ2048ECG100", 
     "variant": "WiFire"
   }, 
+  "connectivity": [
+    "wifi"
+  ],
   "frameworks": [
     "arduino"
   ], 

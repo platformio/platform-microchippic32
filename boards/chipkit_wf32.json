@@ -7,6 +7,9 @@
     "mcu": "32MX695F512L", 
     "variant": "WF32"
   }, 
+  "connectivity": [
+    "wifi"
+  ],
   "frameworks": [
     "arduino"
   ], 
