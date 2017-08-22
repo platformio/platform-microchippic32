@@ -28,7 +28,7 @@ env.Replace(
     RANLIB="pic32-ranlib",
     SIZETOOL="pic32-size",
 
-    ARFLAGS=["rcs"],
+    ARFLAGS=["rc"],
 
     ASFLAGS=[
         "-g1",
