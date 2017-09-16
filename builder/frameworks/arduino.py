@@ -37,8 +37,9 @@ assert isdir(FRAMEWORK_DIR)
 
 env.Append(
     CPPDEFINES=[
-        ("ARDUINO", int(FRAMEWORK_VERSION.split(".")[1])),
-        "ARDUINO_ARCH_PIC32"
+        ("ARDUINO", 10803),
+        "ARDUINO_ARCH_PIC32",
+        ("IDE", "Arduino")
     ],
 
     CPPPATH=[
@@ -51,8 +52,7 @@ env.Append(
     ],
 
     LINKFLAGS=[
-        join(FRAMEWORK_DIR, "cores", BUILD_CORE, "cpp-startup.S"),
-        join(FRAMEWORK_DIR, "cores", BUILD_CORE, "crti.S")
+        join(FRAMEWORK_DIR, "cores", BUILD_CORE, "cpp-startup.S")
     ],
 
     LIBSOURCE_DIRS=[

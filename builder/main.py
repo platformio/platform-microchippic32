@@ -93,26 +93,29 @@ if int(env.BoardConfig().get("upload.maximum_ram_size", 0)) < 65535:
 
 env.Append(
     BUILDERS=dict(
-        ElfToEep=Builder(
+        ElfToHex=Builder(
             action=env.VerboseAction(" ".join([
                 "pic32-bin2hex",
                 "-a", "$SOURCES"
             ]), "Building $TARGET"),
             suffix=".hex"
         ),
-
-        ElfToHex=Builder(
+        ElfToEep=Builder(
             action=env.VerboseAction(" ".join([
                 "$OBJCOPY",
                 "-O",
                 "ihex",
-                "-R",
+                "-j",
                 ".eeprom",
+                '--set-section-flags=.eeprom="alloc,load"',
+                "--no-change-warnings",
+                "--change-section-lma",
+                ".eeprom=0",
                 "$SOURCES",
                 "$TARGET"
             ]), "Building $TARGET"),
-            suffix=".hex"
-        )
+            suffix=".eep"
+        ),
     )
 )
 
