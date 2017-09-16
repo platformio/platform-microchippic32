@@ -1,0 +1,23 @@
+{
+  "build": {
+    "core": "pic32", 
+    "extra_flags": "-D_BOARD_PONTECH_NOFIRE_", 
+    "f_cpu": "200000000UL", 
+    "ldscript": "MZ-application-32MZ2048ECX.ld", 
+    "mcu": "32MZ2048EFG100", 
+    "variant": "PONTECH_NoFire"
+  }, 
+  "frameworks": [
+    "arduino"
+  ], 
+  "name": "Pontech NoFire", 
+  "upload": {
+    "maximum_ram_size": 524288, 
+    "maximum_size": 2080768, 
+    "protocol": "stk500v2", 
+    "require_upload_port": true, 
+    "speed": 115200
+  }, 
+  "url": "http://www.pontech.com/products", 
+  "vendor": "Pontech"
+}
