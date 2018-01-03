@@ -80,9 +80,12 @@ env.Replace(
     ],
     UPLOADCMD='$UPLOADER $UPLOADERFLAGS $SOURCES',
 
-    PROGNAME="firmware",
     PROGSUFFIX=".elf"
 )
+
+# Allow user to override via pre:script
+if env.get("PROGNAME", "program") == "program":
+    env.Replace(PROGNAME="firmware")
 
 if int(env.BoardConfig().get("upload.maximum_ram_size", 0)) < 65535:
     env.Append(
@@ -124,7 +127,7 @@ env.Append(
 #
 target_elf = None
 if "nobuild" in COMMAND_LINE_TARGETS:
-    target_firm = join("$BUILD_DIR", "firmware.hex")
+    target_firm = join("$BUILD_DIR", "${PROGNAME}.hex")
 else:
     target_elf = env.BuildProgram()
 
