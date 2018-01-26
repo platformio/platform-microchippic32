@@ -30,8 +30,6 @@ env = DefaultEnvironment()
 platform = env.PioPlatform()
 
 FRAMEWORK_DIR = platform.get_package_dir("framework-arduinomicrochippic32")
-FRAMEWORK_VERSION = platform.get_package_version(
-    "framework-arduinomicrochippic32")
 BUILD_CORE = env.BoardConfig().get("build.core")
 assert isdir(FRAMEWORK_DIR)
 

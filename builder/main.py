@@ -145,7 +145,7 @@ else:
         ("-MZ" if "MZ" in env.BoardConfig().get("build.mcu", "") else "")
     ])
 
-    target_firm = env.ElfToHex(target_elf)
+    target_firm = env.ElfToHex(join("$BUILD_DIR", "${PROGNAME}"), target_elf)
 
 AlwaysBuild(env.Alias("nobuild", target_firm))
 target_buildprog = env.Alias("buildprog", target_firm, target_firm)
