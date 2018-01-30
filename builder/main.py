@@ -31,7 +31,6 @@ env.Replace(
     ARFLAGS=["rc"],
 
     ASFLAGS=[
-        "-g1",
         "-O2",
         "-Wa,--gdwarf-2",
         "-mprocessor=$BOARD_MCU"
@@ -39,7 +38,6 @@ env.Replace(
 
     CCFLAGS=[
         "-w",
-        "-g",
         "-O2",
         "-mdebugger",
         "-mno-smart-io",
