@@ -35,7 +35,7 @@ assert isdir(FRAMEWORK_DIR)
 
 env.Append(
     CPPDEFINES=[
-        ("ARDUINO", 10803),
+        ("ARDUINO", 10805),
         "ARDUINO_ARCH_PIC32",
         ("IDE", "Arduino")
     ],
