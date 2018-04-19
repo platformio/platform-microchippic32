@@ -30,14 +30,12 @@ env = DefaultEnvironment()
 platform = env.PioPlatform()
 
 FRAMEWORK_DIR = platform.get_package_dir("framework-arduinomicrochippic32")
-FRAMEWORK_VERSION = platform.get_package_version(
-    "framework-arduinomicrochippic32")
 BUILD_CORE = env.BoardConfig().get("build.core")
 assert isdir(FRAMEWORK_DIR)
 
 env.Append(
     CPPDEFINES=[
-        ("ARDUINO", 10803),
+        ("ARDUINO", 10805),
         "ARDUINO_ARCH_PIC32",
         ("IDE", "Arduino")
     ],
@@ -78,9 +76,7 @@ if "build.variant" in env.BoardConfig():
         join(FRAMEWORK_DIR, "variants", env.BoardConfig().get("build.variant"))
     ))
 
-envsafe = env.Clone()
-
-libs.append(envsafe.BuildLibrary(
+libs.append(env.BuildLibrary(
     join("$BUILD_DIR", "FrameworkArduino"),
     join(FRAMEWORK_DIR, "cores", BUILD_CORE)
 ))

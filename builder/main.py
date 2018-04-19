@@ -31,7 +31,6 @@ env.Replace(
     ARFLAGS=["rc"],
 
     ASFLAGS=[
-        "-g1",
         "-O2",
         "-Wa,--gdwarf-2",
         "-mprocessor=$BOARD_MCU"
@@ -39,7 +38,6 @@ env.Replace(
 
     CCFLAGS=[
         "-w",
-        "-g",
         "-O2",
         "-mdebugger",
         "-mno-smart-io",
@@ -80,9 +78,12 @@ env.Replace(
     ],
     UPLOADCMD='$UPLOADER $UPLOADERFLAGS $SOURCES',
 
-    PROGNAME="firmware",
     PROGSUFFIX=".elf"
 )
+
+# Allow user to override via pre:script
+if env.get("PROGNAME", "program") == "program":
+    env.Replace(PROGNAME="firmware")
 
 if int(env.BoardConfig().get("upload.maximum_ram_size", 0)) < 65535:
     env.Append(
@@ -124,7 +125,7 @@ env.Append(
 #
 target_elf = None
 if "nobuild" in COMMAND_LINE_TARGETS:
-    target_firm = join("$BUILD_DIR", "firmware.hex")
+    target_firm = join("$BUILD_DIR", "${PROGNAME}.hex")
 else:
     target_elf = env.BuildProgram()
 
@@ -142,7 +143,7 @@ else:
         ("-MZ" if "MZ" in env.BoardConfig().get("build.mcu", "") else "")
     ])
 
-    target_firm = env.ElfToHex(target_elf)
+    target_firm = env.ElfToHex(join("$BUILD_DIR", "${PROGNAME}"), target_elf)
 
 AlwaysBuild(env.Alias("nobuild", target_firm))
 target_buildprog = env.Alias("buildprog", target_firm, target_firm)
