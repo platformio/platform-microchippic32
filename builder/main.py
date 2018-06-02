@@ -69,6 +69,9 @@ env.Replace(
 
     LIBS=["m"],
 
+    SIZEPROGREGEXP=r"^(?:\.reset|\.image_ptr_table|\.app_excpt|\.vector\S*|\.startup|\.init|\.fini|\.ctors|\.dtors|\.header_info|\.dinit|\.text\S*|\.rodata\S*|\.data)\s+([0-9]+).*",
+    SIZEDATAREGEXP=r"^(?:\.ram_exchange_data|\.dbg_data|\.sdata|\.sbss|\.data\S*|\.stack|\.bss|\.comment.__use_force_isr_install|\.eh_frame|\.jcr)\s+([0-9]+).*",
+    SIZECHECKCMD="$SIZETOOL -A -d $SOURCES",
     SIZEPRINTCMD='$SIZETOOL -B -d $SOURCES',
 
     UPLOADER="pic32prog",
