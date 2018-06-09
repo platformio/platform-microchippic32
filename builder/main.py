@@ -94,6 +94,10 @@ if int(env.BoardConfig().get("upload.maximum_ram_size", 0)) < 65535:
         CCFLAGS=["-G1024"]
     )
 
+# append LD script manually
+if "LDSCRIPT_PATH" in env:
+    del env['LDSCRIPT_PATH']
+
 
 env.Append(
     BUILDERS=dict(
@@ -132,16 +136,8 @@ if "nobuild" in COMMAND_LINE_TARGETS:
 else:
     target_elf = env.BuildProgram()
 
-    # Hook: Fix option for LD script
-    _new_linkflags = []
-    for f in env['LINKFLAGS']:
-        if not f.startswith("-Wl,-T"):
-            _new_linkflags.append(f)
-        else:
-            _new_linkflags.append("-Wl,--script=%s" % f[6:])
-
-    env.Replace(LINKFLAGS=_new_linkflags)
     env.Append(LINKFLAGS=[
+        "-Wl,--script=%s" % env.BoardConfig().get("build.ldscript", ""),
         "-Wl,--script=chipKIT-application-COMMON%s.ld" %
         ("-MZ" if "MZ" in env.BoardConfig().get("build.mcu", "") else "")
     ])
