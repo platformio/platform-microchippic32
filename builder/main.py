@@ -30,6 +30,30 @@ env.Replace(
 
     ARFLAGS=["rc"],
 
+    SIZEPROGREGEXP=r"^(?:\.reset|\.image_ptr_table|\.app_excpt|\.vector\S*|\.startup|\.init|\.fini|\.ctors|\.dtors|\.header_info|\.dinit|\.text\S*|\.rodata\S*|\.data)\s+([0-9]+).*",
+    SIZEDATAREGEXP=r"^(?:\.ram_exchange_data|\.dbg_data|\.sdata|\.sbss|\.data\S*|\.stack|\.bss|\.comment.__use_force_isr_install|\.eh_frame|\.jcr)\s+([0-9]+).*",
+    SIZECHECKCMD="$SIZETOOL -A -d $SOURCES",
+    SIZEPRINTCMD='$SIZETOOL -B -d $SOURCES',
+
+    UPLOADER="pic32prog",
+    UPLOADERFLAGS=[
+        "-d", '"$UPLOAD_PORT"',
+        "-b", "$UPLOAD_SPEED"
+    ],
+    UPLOADCMD='$UPLOADER $UPLOADERFLAGS $SOURCES',
+
+    PROGSUFFIX=".elf"
+)
+
+# Allow user to override via pre:script
+if env.get("PROGNAME", "program") == "program":
+    env.Replace(PROGNAME="firmware")
+
+# append LD script manually
+if "LDSCRIPT_PATH" in env:
+    del env['LDSCRIPT_PATH']
+
+env.Append(
     ASFLAGS=[
         "-O2",
         "-Wa,--gdwarf-2",
@@ -69,37 +93,6 @@ env.Replace(
 
     LIBS=["m"],
 
-    SIZEPROGREGEXP=r"^(?:\.reset|\.image_ptr_table|\.app_excpt|\.vector\S*|\.startup|\.init|\.fini|\.ctors|\.dtors|\.header_info|\.dinit|\.text\S*|\.rodata\S*|\.data)\s+([0-9]+).*",
-    SIZEDATAREGEXP=r"^(?:\.ram_exchange_data|\.dbg_data|\.sdata|\.sbss|\.data\S*|\.stack|\.bss|\.comment.__use_force_isr_install|\.eh_frame|\.jcr)\s+([0-9]+).*",
-    SIZECHECKCMD="$SIZETOOL -A -d $SOURCES",
-    SIZEPRINTCMD='$SIZETOOL -B -d $SOURCES',
-
-    UPLOADER="pic32prog",
-    UPLOADERFLAGS=[
-        "-d", '"$UPLOAD_PORT"',
-        "-b", "$UPLOAD_SPEED"
-    ],
-    UPLOADCMD='$UPLOADER $UPLOADERFLAGS $SOURCES',
-
-    PROGSUFFIX=".elf"
-)
-
-# Allow user to override via pre:script
-if env.get("PROGNAME", "program") == "program":
-    env.Replace(PROGNAME="firmware")
-
-if int(env.BoardConfig().get("upload.maximum_ram_size", 0)) < 65535:
-    env.Append(
-        ASFLAGS=["-G1024"],
-        CCFLAGS=["-G1024"]
-    )
-
-# append LD script manually
-if "LDSCRIPT_PATH" in env:
-    del env['LDSCRIPT_PATH']
-
-
-env.Append(
     BUILDERS=dict(
         ElfToHex=Builder(
             action=env.VerboseAction(" ".join([
@@ -126,6 +119,12 @@ env.Append(
         ),
     )
 )
+
+if int(env.BoardConfig().get("upload.maximum_ram_size", 0)) < 65535:
+    env.Append(
+        ASFLAGS=["-G1024"],
+        CCFLAGS=["-G1024"]
+    )
 
 #
 # Target: Build executable and linkable firmware
