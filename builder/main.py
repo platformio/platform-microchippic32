@@ -18,6 +18,7 @@ from SCons.Script import (COMMAND_LINE_TARGETS, AlwaysBuild, Builder, Default,
                           DefaultEnvironment)
 
 env = DefaultEnvironment()
+board_config = env.BoardConfig()
 
 env.Replace(
     AR="pic32-ar",
@@ -120,11 +121,16 @@ env.Append(
     )
 )
 
-if int(env.BoardConfig().get("upload.maximum_ram_size", 0)) < 65535:
+if int(board_config.get("upload.maximum_ram_size", 0)) < 65535:
     env.Append(
         ASFLAGS=["-G1024"],
         CCFLAGS=["-G1024"]
     )
+
+if board_config.get("build.mcu").startswith("32MX"):
+    env.Append(CPPDEFINES=["__PIC32MX__"])
+elif board_config.get("build.mcu").startswith("32MZ"):
+    env.Append(CPPDEFINES=["__PIC32MZ__"])
 
 #
 # Target: Build executable and linkable firmware
@@ -136,9 +142,9 @@ else:
     target_elf = env.BuildProgram()
 
     env.Append(LINKFLAGS=[
-        "-Wl,--script=%s" % env.BoardConfig().get("build.ldscript", ""),
+        "-Wl,--script=%s" % board_config.get("build.ldscript", ""),
         "-Wl,--script=chipKIT-application-COMMON%s.ld" %
-        ("-MZ" if "MZ" in env.BoardConfig().get("build.mcu", "") else "")
+        ("-MZ" if "MZ" in board_config.get("build.mcu", "") else "")
     ])
 
     target_firm = env.ElfToHex(join("$BUILD_DIR", "${PROGNAME}"), target_elf)
