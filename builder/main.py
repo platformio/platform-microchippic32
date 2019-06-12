@@ -137,6 +137,7 @@ elif board_config.get("build.mcu").startswith("32MZ"):
 #
 target_elf = None
 if "nobuild" in COMMAND_LINE_TARGETS:
+    target_elf = join("$BUILD_DIR", "${PROGNAME}.elf")
     target_firm = join("$BUILD_DIR", "${PROGNAME}.hex")
 else:
     target_elf = env.BuildProgram()
