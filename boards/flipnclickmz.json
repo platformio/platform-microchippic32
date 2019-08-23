@@ -1,7 +1,7 @@
 {
   "build": {
     "core": "pic32",
-    "extra_flags": "-D_BOARD_PIC32MZ_FLIP_N_CLICK_",
+    "extra_flags": "-D_BOARD_PIC32MZ_FLIP_N_CLICK_ -DPIO_ARDUINO_ENABLE_USB_SERIAL",
     "f_cpu": "252000000L",
     "ldscript": "MZ-application-32MZ2048ECX.ld",
     "mcu": "32MZ2048EFH100",

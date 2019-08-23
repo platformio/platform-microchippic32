@@ -1,16 +1,16 @@
 {
   "build": {
     "core": "pic32",
-    "extra_flags": "-D_BOARD_LENNY_ -DPIO_ARDUINO_ENABLE_USB_HID",
+    "extra_flags": "-D_BOARD_DSMINI_",
     "f_cpu": "40000000L",
-    "ldscript": "chipKIT-application-32MX270F256.ld",
-    "mcu": "32MX270F256D",
-    "variant": "Lenny"
+    "ldscript": "chipKIT-application-32MX150F128.ld",
+    "mcu": "32MX150F128C",
+    "variant": "DSMini"
   },
   "frameworks": [
     "arduino"
   ],
-  "name": "chipKIT Lenny",
+  "name": "DataStation Mini",
   "upload": {
     "maximum_ram_size": 32768,
     "maximum_size": 122880,
@@ -18,6 +18,6 @@
     "require_upload_port": true,
     "speed": 115200
   },
-  "url": "http://chipkit.net/tag/lenny/",
-  "vendor": "chipKIT"
+  "url": "http://www.makerologist.com/",
+  "vendor": "Makerology"
 }

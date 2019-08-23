@@ -1,16 +1,16 @@
 {
   "build": {
     "core": "pic32",
-    "extra_flags": "-D_BOARD_FUBARINO_MINI_ -DPIO_ARDUINO_ENABLE_USB_SERIAL",
+    "extra_flags": "-D_BOARD_HELVEPIC32BBS_ -DPIO_ARDUINO_ENABLE_USB_SERIAL",
     "f_cpu": "48000000L",
     "ldscript": "chipKIT-application-32MX250F128.ld",
-    "mcu": "32MX250F128D",
-    "variant": "Fubarino_Mini"
+    "mcu": "32MX250F128B",
+    "variant": "HelvePic32BBside"
   },
   "frameworks": [
     "arduino"
   ],
-  "name": "Fubarino Mini",
+  "name": "HelvePic32",
   "upload": {
     "maximum_ram_size": 32768,
     "maximum_size": 122880,
@@ -18,6 +18,6 @@
     "require_upload_port": true,
     "speed": 115200
   },
-  "url": "http://fubarino.org/mini/",
-  "vendor": "Fubarino"
+  "url": "https://www.helvepic32.org/shop-1/",
+  "vendor": "BOXTEC"
 }

@@ -31,12 +31,12 @@
     "framework-arduinomicrochippic32": {
       "type": "framework",
       "optional": true,
-      "version": "~1.10403.0"
+      "version": "~1.20006.0"
     },
     "tool-pic32prog": {
       "type": "uploader",
       "optional": true,
-      "version": "~2.20104.0"
+      "version": "~2.20146.0"
     }
   }
 }

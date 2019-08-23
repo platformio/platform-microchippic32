@@ -1,11 +1,11 @@
 {
   "build": {
     "core": "pic32",
-    "extra_flags": "-D_BOARD_UBW32_MX460_ -D_USE_USB_FOR_SERIAL_",
+    "extra_flags": "-D_BOARD_UBW32_MX460_ -DPIO_ARDUINO_ENABLE_USB_SERIAL",
     "f_cpu": "80000000L",
     "ldscript": "chipKIT-application-32MX460F512.ld",
     "mcu": "32MX460F512L",
-    "variant": "Default_100"
+    "variant": "UBW_MX4"
   },
   "frameworks": [
     "arduino"
