@@ -31,8 +31,8 @@ env.Replace(
 
     ARFLAGS=["rc"],
 
-    SIZEPROGREGEXP=r"^(?:\.reset|\.image_ptr_table|\.app_excpt|\.vector\S*|\.startup|\.init|\.fini|\.ctors|\.dtors|\.header_info|\.dinit|\.text\S*|\.rodata\S*|\.data)\s+([0-9]+).*",
-    SIZEDATAREGEXP=r"^(?:\.ram_exchange_data|\.dbg_data|\.sdata|\.sbss|\.data\S*|\.stack|\.bss|\.comment.__use_force_isr_install|\.eh_frame|\.jcr)\s+([0-9]+).*",
+    SIZEPROGREGEXP=r"^(?:\.reset|\.startup|\.init|\.fini|\.ctors|\.dtors|\.header_info|\.dinit|\.text\S*|\.rodata\S*|\.romdata\S*|\.data)\s+([0-9]+).*",
+    SIZEDATAREGEXP=r"^(?:\.dbg_data|\.ram_exchange_data|\.sdata|\.sbss|\.data\S*|\.stack|\.bss\S*|\.eh_frame|\.jcr|\.libc\S*|\.heap)\s+([0-9]+).*",
     SIZECHECKCMD="$SIZETOOL -A -d $SOURCES",
     SIZEPRINTCMD='$SIZETOOL -B -d $SOURCES',
 
@@ -61,6 +61,8 @@ env.Append(
         "-mprocessor=$BOARD_MCU"
     ],
 
+    CFLAGS=["-std=gnu11"],
+
     CCFLAGS=[
         "-w",
         "-O2",
@@ -74,7 +76,10 @@ env.Append(
         "-ftoplevel-reorder"
     ],
 
-    CXXFLAGS=["-fno-exceptions"],
+    CXXFLAGS=[
+        "-fno-exceptions",
+        "-std=gnu++11"
+    ],
 
     CPPDEFINES=[
         ("F_CPU", "$BOARD_F_CPU"),
@@ -127,16 +132,13 @@ if int(board_config.get("upload.maximum_ram_size", 0)) < 65535:
         CCFLAGS=["-G1024"]
     )
 
-if board_config.get("build.mcu").startswith("32MX"):
-    env.Append(CPPDEFINES=["__PIC32MX__"])
-elif board_config.get("build.mcu").startswith("32MZ"):
-    env.Append(CPPDEFINES=["__PIC32MZ__"])
-
 #
 # Target: Build executable and linkable firmware
 #
+
 target_elf = None
 if "nobuild" in COMMAND_LINE_TARGETS:
+    target_elf = join("$BUILD_DIR", "${PROGNAME}.elf")
     target_firm = join("$BUILD_DIR", "${PROGNAME}.hex")
 else:
     target_elf = env.BuildProgram()

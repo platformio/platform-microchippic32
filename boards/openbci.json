@@ -1,7 +1,7 @@
 {
   "build": {
     "core": "pic32",
-    "extra_flags": "-D_BOARD_DP32_ -D_USE_USB_FOR_SERIAL_",
+    "extra_flags": "-D_BOARD_DP32_",
     "f_cpu": "40000000L",
     "ldscript": "chipKIT-application-32MX250F128.ld",
     "mcu": "32MX250F128B",

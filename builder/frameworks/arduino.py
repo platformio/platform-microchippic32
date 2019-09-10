@@ -35,7 +35,7 @@ assert isdir(FRAMEWORK_DIR)
 
 env.Append(
     CPPDEFINES=[
-        ("ARDUINO", 10805),
+        ("ARDUINO", 10808),
         "ARDUINO_ARCH_PIC32",
         ("IDE", "Arduino")
     ],
@@ -57,6 +57,23 @@ env.Append(
         join(FRAMEWORK_DIR, "libraries")
     ]
 )
+
+#
+# Process USB flags
+#
+
+cpp_flags = env.Flatten(env.get("CPPDEFINES", []))
+if any(str(f).startswith("PIO_ARDUINO_ENABLE_USB") for f in cpp_flags):
+    env.Append(
+        CPPDEFINES=[
+            "__USB_ENABLED__",
+            "__SERIAL_IS_USB__"
+        ]
+    )
+if "PIO_ARDUINO_ENABLE_USB_SERIAL" in cpp_flags:
+    env.Append(CPPDEFINES=["__USB_CDCACM__"])
+elif "PIO_ARDUINO_ENABLE_USB_HID" in cpp_flags:
+    env.Append(CPPDEFINES=["__USB_CDCACM_KM__"])
 
 #
 # Target: Build Core Library
