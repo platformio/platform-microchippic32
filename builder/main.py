@@ -144,7 +144,8 @@ else:
     target_elf = env.BuildProgram()
 
     env.Append(LINKFLAGS=[
-        "-Wl,--script=%s" % board_config.get("build.ldscript", ""),
+        "-Wl,--script=%s" % board_config.get("build.ldscript", board_config.get(
+            "build.arduino.ldscript", "")),
         "-Wl,--script=chipKIT-application-COMMON%s.ld" %
         ("-MZ" if "MZ" in board_config.get("build.mcu", "") else "")
     ])
