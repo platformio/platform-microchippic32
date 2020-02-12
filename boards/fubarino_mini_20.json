@@ -1,9 +1,11 @@
 {
   "build": {
+    "arduino": {
+      "ldscript": "chipKIT-application-32MX270F256.ld"
+    },
     "core": "pic32",
     "extra_flags": "-D_BOARD_FUBARINO_MINI_20_ -DPIO_ARDUINO_ENABLE_USB_SERIAL",
     "f_cpu": "48000000L",
-    "ldscript": "chipKIT-application-32MX270F256.ld",
     "mcu": "32MX270F256D",
     "variant": "Fubarino_Mini_20"
   },

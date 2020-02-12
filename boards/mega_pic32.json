@@ -1,9 +1,11 @@
 {
   "build": {
+    "arduino": {
+      "ldscript": "chipKIT-application-32MX795F512.ld"
+    },
     "core": "pic32",
     "extra_flags": "-D_BOARD_MEGA_",
     "f_cpu": "80000000L",
-    "ldscript": "chipKIT-application-32MX795F512.ld",
     "mcu": "32MX795F512L",
     "variant": "Max32"
   },

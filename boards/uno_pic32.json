@@ -1,5 +1,8 @@
 {
   "build": {
+    "arduino": {
+      "ldscript": "chipKIT-application-32MX320F128.ld"
+    },
     "core": "pic32",
     "extra_flags": "-D_BOARD_UNO_",
     "f_cpu": "80000000L",
@@ -9,7 +12,6 @@
         "0x6001"
       ]
     ],
-    "ldscript": "chipKIT-application-32MX320F128.ld",
     "mcu": "32MX320F128H",
     "variant": "Uno32"
   },

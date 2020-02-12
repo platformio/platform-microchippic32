@@ -1,9 +1,11 @@
 {
   "build": {
+    "arduino": {
+      "ldscript": "chipKIT-application-32MX150F128.ld"
+    },
     "core": "pic32",
     "extra_flags": "-D_BOARD_DSMINI_",
     "f_cpu": "40000000L",
-    "ldscript": "chipKIT-application-32MX150F128.ld",
     "mcu": "32MX150F128C",
     "variant": "DSMini"
   },
