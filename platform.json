@@ -2,8 +2,7 @@
   "name": "microchippic32",
   "title": "Microchip PIC32",
   "description": "Microchip's 32-bit portfolio with the MIPS microAptiv or M4K core offer high performance microcontrollers, and all the tools needed to develop your embedded projects. PIC32 MCUs gives your application the processing power, memory and peripherals your design needs!",
-  "url": "http://www.microchip.com/design-centers/32-bit",
-  "homepage": "http://platformio.org/platforms/microchippic32",
+  "homepage": "http://www.microchip.com/design-centers/32-bit",
   "license": "Apache-2.0",
   "engines": {
     "platformio": "<5"
