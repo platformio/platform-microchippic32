@@ -31,16 +31,19 @@
   "packages": {
     "toolchain-microchippic32": {
       "type": "toolchain",
+      "owner": "platformio",
       "version": "~1.40803.0"
     },
     "framework-arduinomicrochippic32": {
       "type": "framework",
       "optional": true,
+      "owner": "platformio",
       "version": "~1.20006.0"
     },
     "tool-pic32prog": {
       "type": "uploader",
       "optional": true,
+      "owner": "platformio",
       "version": "~2.20146.0"
     }
   }
