@@ -11,17 +11,13 @@
       "MIPS32"
   ],
   "engines": {
-    "platformio": "<5"
+    "platformio": "^5"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/platformio/platform-microchippic32.git"
   },
   "version": "1.6.1",
-  "packageRepositories": [
-    "https://dl.bintray.com/platformio/dl-packages/manifest.json",
-    "http://dl.platformio.org/packages/manifest.json"
-  ],
   "frameworks": {
     "arduino": {
       "package": "framework-arduinomicrochippic32",
