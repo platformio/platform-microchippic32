@@ -12,7 +12,7 @@ install:
   - sudo apt-get install libc6-i386
 
   - pip install -U https://github.com/platformio/platformio/archive/develop.zip
-  - platformio platform install file://.
+  - pio pkg install --global --platform symlink://.
 
 script:
   - platformio run -d $PLATFORMIO_PROJECT_DIR
