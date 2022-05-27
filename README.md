@@ -1,6 +1,6 @@
-# Microchip PIC32: development platform for [PlatformIO](http://platformio.org)
-[![Build Status](https://travis-ci.org/platformio/platform-microchippic32.svg?branch=develop)](https://travis-ci.org/platformio/platform-microchippic32)
-[![Build status](https://ci.appveyor.com/api/projects/status/r1gu34suxrbgfjp9/branch/develop?svg=true)](https://ci.appveyor.com/project/ivankravets/platform-microchippic32/branch/develop)
+# Microchip PIC32: development platform for [PlatformIO](https://platformio.org)
+
+[![Build Status](https://github.com/platformio/platform-microchippic32/workflows/Examples/badge.svg)](https://github.com/platformio/platform-microchippic32/actions)
 
 Microchip's 32-bit portfolio with the MIPS microAptiv or M4K core offer high performance microcontrollers, and all the tools needed to develop your embedded projects. PIC32 MCUs gives your application the processing power, memory and peripherals your design needs!
 
@@ -9,7 +9,7 @@ Microchip's 32-bit portfolio with the MIPS microAptiv or M4K core offer high per
 
 # Usage
 
-1. [Install PlatformIO](http://platformio.org)
+1. [Install PlatformIO](https://platformio.org)
 2. Create PlatformIO project and configure a platform option in [platformio.ini](https://docs.platformio.org/page/projectconf.html) file:
 
 ## Stable version
