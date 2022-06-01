@@ -12,7 +12,7 @@
   "frameworks": [
     "arduino"
   ],
-  "name": "4DSystems PICadillo 35T",
+  "name": "4D Systems PICadillo 35T",
   "upload": {
     "maximum_ram_size": 131072,
     "maximum_size": 520192,
@@ -21,5 +21,5 @@
     "speed": 115200
   },
   "url": "http://www.4dsystems.com.au/product/Picadillo_35T/",
-  "vendor": "4DSystems"
+  "vendor": "4D Systems"
 }
